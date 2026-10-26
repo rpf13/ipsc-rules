@@ -156,6 +156,14 @@ async function share() {
     }
   } catch {}
 }
+/** Back to the start page: empty search, default discipline. */
+function goHome() {
+  query.value = ''
+  discipline.value = 'handgun'
+  about.value = false
+  run()
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 function toggleTheme() {
   const next = theme.global.current.value.dark ? 'light' : 'dark'
   theme.change(next)
@@ -169,9 +177,11 @@ if (savedTheme) theme.change(savedTheme)
   <v-app>
     <v-app-bar color="appbar" density="comfortable" flat class="appbar">
       <v-app-bar-title>
-        <span class="font-weight-black text-gold">IPSC</span>
-        <span class="font-weight-bold ml-1">Rules</span>
-        <span class="ml-2 d-none d-sm-inline" style="opacity: 0.7">Finder</span>
+        <a :href="base" class="home-link" aria-label="IPSC Rules Finder – start page" @click.prevent="goHome">
+          <span class="font-weight-black text-gold">IPSC</span>
+          <span class="font-weight-bold ml-1">Rules</span>
+          <span class="ml-2 d-none d-sm-inline" style="opacity: 0.7">Finder</span>
+        </a>
       </v-app-bar-title>
       <template #append>
         <v-btn :icon="mdiShareVariant" variant="text" aria-label="Share this search" @click="share" />
@@ -344,6 +354,11 @@ if (savedTheme) theme.change(savedTheme)
 <style>
 .page {
   max-width: 860px;
+}
+.home-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 .appbar {
   border-bottom: 2px solid rgb(var(--v-theme-gold)) !important;
