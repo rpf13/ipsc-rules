@@ -1,0 +1,27 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "preview",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "BASE_PATH=/ipsc-rules/ npx vite preview --port 4173 --strictPort"
+      ],
+      "port": 4173,
+      "url": "http://localhost:4173"
+    },
+    {
+      "name": "dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "vite",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "port": 5173,
+      "url": "http://localhost:5173"
+    }
+  ]
+}

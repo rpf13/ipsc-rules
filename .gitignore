@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.DS_Store
+# fetched / copied at build time (npm run fetch-model, npm install)
+public/models/
+public/ort/
+data/chunks.json
